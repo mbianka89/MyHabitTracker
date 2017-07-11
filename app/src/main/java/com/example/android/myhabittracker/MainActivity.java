@@ -27,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addTestHabitsToDatabase(HabitsDbHelper databaseHelper) {
-        databaseHelper.insertHabit("Early Morning Run", "July", 11);
-        databaseHelper.insertHabit("Exercise at home", "July", 12);
-        databaseHelper.insertHabit("Playing with the kids", "July", 13);
+        databaseHelper.insertHabit("Early Morning Run",  07 , 11);
+        databaseHelper.insertHabit("Exercise at home", 07 , 12);
+        databaseHelper.insertHabit("Playing with the kids", 07, 13);
 
     }
 
@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor = databaseHelper.readAllHabits();
 
         int idColumnIndex = cursor.getColumnIndex(HabitsEntry._ID);
-        String descriptionColumnIndex = cursor.getColumnIndex(HabitsEntry.COLUMN_HABIT_DESCRIPTION);
-        String monthColumnIndex = cursor.getColumnIndex(HabitsEntry.COLUMN_MONTH);
+        int descriptionColumnIndex = cursor.getColumnIndex(HabitsEntry.COLUMN_HABIT_DESCRIPTION);
+        int monthColumnIndex = cursor.getColumnIndex(HabitsEntry.COLUMN_MONTH);
         int dayColumnIndex = cursor.getColumnIndex(HabitsEntry.COLUMN_DAY);
 
         String habitDatabaseContent = "";
