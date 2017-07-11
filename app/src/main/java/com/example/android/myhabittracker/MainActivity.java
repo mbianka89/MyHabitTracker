@@ -1,17 +1,13 @@
 package com.example.android.myhabittracker;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-//import .myhabittracker.data.HabitContract.HabitsEntry;
-//import name..myhabittracker.data.HabitDbHelper;
+import com.example.android.myhabittracker.Data.HabitsDbHelper;
+import com.example.android.myhabittracker.Data.HabitsContract.HabitsEntry;
 
-import static android.R.attr.name;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,25 +20,25 @@ public class MainActivity extends AppCompatActivity {
 
         mDbInfoDisplayTextView = (TextView) findViewById(R.id.db_info_display_textview);
 
-        HabitDbHelper databaseHelper = new HabitDbHelper(this);
+        HabitsDbHelper databaseHelper = new HabitsDbHelper(this);
 
         addTestHabitsToDatabase(databaseHelper);
         displayDatabaseContent(databaseHelper);
     }
 
-    private void addTestHabitsToDatabase(HabitDbHelper databaseHelper) {
+    private void addTestHabitsToDatabase(HabitsDbHelper databaseHelper) {
         databaseHelper.insertHabit("Early Morning Run", "July", 11);
         databaseHelper.insertHabit("Exercise at home", "July", 12);
         databaseHelper.insertHabit("Playing with the kids", "July", 13);
 
     }
 
-    private void displayDatabaseContent(HabitDbHelper databaseHelper) {
+    private void displayDatabaseContent(HabitsDbHelper databaseHelper) {
         Cursor cursor = databaseHelper.readAllHabits();
 
         int idColumnIndex = cursor.getColumnIndex(HabitsEntry._ID);
-        int descriptionColumnIndex = cursor.getColumnIndex(HabitsEntry.COLUMN_HABITS_DESCRIPTON);
-        int monthColumnIndex = cursor.getColumnIndex(HabitsEntry.COLUMN_MONTH);
+        String descriptionColumnIndex = cursor.getColumnIndex(HabitsEntry.COLUMN_HABIT_DESCRIPTION);
+        String monthColumnIndex = cursor.getColumnIndex(HabitsEntry.COLUMN_MONTH);
         int dayColumnIndex = cursor.getColumnIndex(HabitsEntry.COLUMN_DAY);
 
         String habitDatabaseContent = "";
