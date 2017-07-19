@@ -14,23 +14,24 @@ import com.example.android.myhabittracker.Data.HabitsContract.HabitsEntry;
 
     public class HabitsDbHelper extends SQLiteOpenHelper {
 
-        private static final String DATABASE_NAME = "MY HABITS TABLE.db";
+        private static final String DATABASE_NAME = "habits.db";
         private static final int DATABASE_VERSION = 1;
 
         public HabitsDbHelper(Context context) { super(context, DATABASE_NAME, null, DATABASE_VERSION); }
 
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-            String SQL_CREATE_MY_HABITS_TABLE = "CREATE TABLE " + HabitsEntry.TABLE_NAME + "("
-                    + HabitsContract.HabitsEntry._ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + HabitsContract.HabitsEntry.COLUMN_HABIT_DESCRIPTION + " TEXT NOT NULL, "
-                    + HabitsContract.HabitsEntry.COLUMN_MONTH + " TEXT NOT NULL DEFAULT 01, "
-                    + HabitsContract.HabitsEntry.COLUMN_DAY+"INTEGER NOT NULL DEFAULT 1);";
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        String SQL_CREATE_MY_HABITS_TABLE = "CREATE TABLE " + HabitsEntry.TABLE_NAME + "("
+                + HabitsEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + HabitsEntry.COLUMN_HABIT_DESCRIPTION + " TEXT NOT NULL, "
+                + HabitsEntry.COLUMN_MONTH + " TEXT NOT NULL DEFAULT January, "
+                + HabitsEntry.COLUMN_DAY  +  " INTEGER NOT NULL DEFAULT 1);";
 
-            db.execSQL(SQL_CREATE_MY_HABITS_TABLE);
-        }
+        db.execSQL(SQL_CREATE_MY_HABITS_TABLE);
+    }
 
-        @Override
+
+    @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             String SQL_DELETE_TABLE = "DELETE THE TABLE IN CASE ALREADY CREATED " + HabitsEntry.TABLE_NAME;
 

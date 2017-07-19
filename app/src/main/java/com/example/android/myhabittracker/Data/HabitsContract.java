@@ -13,7 +13,7 @@ public final class HabitsContract {
 
     public final static class HabitsEntry implements BaseColumns {
 
-        public final static String TABLE_NAME ="My habits";
+        public final static String TABLE_NAME ="My_habits";
 
         public final static String COLUMN_HABIT_DESCRIPTION = "description";
         public final static String COLUMN_MONTH = "month";

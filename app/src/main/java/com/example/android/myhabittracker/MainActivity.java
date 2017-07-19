@@ -22,11 +22,11 @@ public class MainActivity extends AppCompatActivity {
 
         HabitsDbHelper databaseHelper = new HabitsDbHelper(this);
 
-        addTestHabitsToDatabase(databaseHelper);
+        addTestHabitToDatabase(databaseHelper);
         displayDatabaseContent(databaseHelper);
     }
 
-    private void addTestHabitsToDatabase(HabitsDbHelper databaseHelper) {
+    private void addTestHabitToDatabase(HabitsDbHelper databaseHelper) {
         databaseHelper.insertHabit("Early Morning Run",  07 , 11);
         databaseHelper.insertHabit("Exercise at home", 07 , 12);
         databaseHelper.insertHabit("Playing with the kids", 07, 13);
